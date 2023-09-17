@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import MovieList from './MovieList';
+import Filter from './Filter';
+
 
 class App extends Component {
   constructor(props) {
@@ -60,4 +64,29 @@ class App extends Component {
   }
 }
 
+// Ici j'ai ajouté la fonction de du react hooks.
+function App() {
+  const [movies, setMovies] = useState([
+    // Initialize with some movie data
+  ]);
+
+  const handleFilter = ({ title, rating }) => {
+    // Implement filtering logic here and update the state of movies accordingly.
+    // You can use the filter() method to filter movies based on title and rating.
+  };
+
+  return (
+    <div className="app">
+      <h1>My Movie App</h1>
+      <Filter onFilter={handleFilter} />
+      <MovieList movies={movies} />
+    </div>
+  );
+}
+// pitie Mr Cisse
+
 export default App;
+
+
+
+
