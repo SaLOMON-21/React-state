@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import './App.css';
 import MovieList from './MovieList';
 import Filter from './Filter';
+//importer react routeur d'abord.
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'; 
 
 
 class App extends Component {
@@ -71,8 +73,7 @@ function App() {
   ]);
 
   const handleFilter = ({ title, rating }) => {
-    // Implement filtering logic here and update the state of movies accordingly.
-    // You can use the filter() method to filter movies based on title and rating.
+
   };
 
   return (
@@ -84,6 +85,44 @@ function App() {
   );
 }
 // pitie Mr Cisse
+
+// voici le project react routeur ci-dessous, merci Mr Cisse.
+
+//  Defini le routeur
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/movie/:id" component={MovieDescriptionPage} />
+      </div>
+    </Router>
+  );
+};
+//  Creer composents
+const HomePage = () => {
+  // faire la liste de video avec un boutom de lien
+  return (
+    <div>
+      <Link to="/movie/1">Movie 1</Link>
+      <Link to="/movie/2">Movie 2</Link>
+      {}
+    </div>
+  );
+};
+const MovieDescriptionPage = (props) => {
+  // Extrait l'ID du film  du parametre de l'url 
+  const { id } = props.match.params;
+
+  // ajputer la description du film ici
+  return (
+    <div>
+      <h2>Movie {id} Description</h2>
+      {/* love and peace */}
+      <Link to="/">Back to Home</Link>
+    </div>
+  );
+};
 
 export default App;
 
